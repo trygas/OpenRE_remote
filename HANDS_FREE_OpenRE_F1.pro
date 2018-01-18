@@ -46,6 +46,9 @@ INCLUDEPATH += . \
 		2_Package/servo \
 		2_Package/tf \
 		2_Package/touch_screen \
+                2_Package/keyboard \
+                2_Package/remote_control \
+                2_Package/bluetooth \
 		3_OS \
 		3_OS/STM32F1/RTOS/ \
 		3_OS/STM32F1/RTOS/uCOS-II/CONFIG/ \
@@ -182,6 +185,13 @@ HEADERS += 0_Project/examples/handsfree_simple_app/src/main_config.h \
 		2_Package/touch_screen/gt9147.h \
 		2_Package/touch_screen/ott2001a.h \
 		2_Package/touch_screen/touch_top.h \
+                2_Package/keyboard/key_adc.h \
+                2_Package/keyboard/key_io.h \
+                2_Package/keyboard/key_top.h \
+                2_Package/remote_control/remote.h \
+                2_Package/remote_control/remote_control.h \
+                2_Package/bluetooth/bluetooth.h \
+                2_Package/robot_abstract/remote_parameters.h \
 		3_OS/os_include.h \
 		3_OS/STM32F1/RTOS/uCOS-II/CONFIG/includes.h \
 		3_OS/STM32F1/RTOS/uCOS-II/CONFIG/os_cfg.h \
@@ -303,6 +313,12 @@ SOURCES += 0_Project/examples/handsfree_simple_app/src/main.cpp \
 		2_Package/touch_screen/gt9147.c \
 		2_Package/touch_screen/ott2001a.c \
 		2_Package/touch_screen/touch_top.c \
+                2_Package/keyboard/key_adc.cpp \
+                2_Package/keyboard/key_io.cpp \
+                2_Package/keyboard/key_top.cpp \
+                2_Package/remote_control/remote.cpp \
+                2_Package/remote_control/remote_control.cpp \
+                2_Package/bluetooth/bluetooth.cpp \
 		3_OS/STM32F1/RTOS/uCOS-II/CORE/os_core.c \
 		3_OS/STM32F1/RTOS/uCOS-II/CORE/os_dbg_r.c \
 		3_OS/STM32F1/RTOS/uCOS-II/CORE/os_flag.c \
