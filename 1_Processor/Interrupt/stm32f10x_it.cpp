@@ -32,6 +32,17 @@ void USART1_IRQHandler(void)
     if(USART1->SR&(1<<5))
     {
         data=USART1->DR;
+        //HF_USART_Put_Char(4,data);
+
+        //        if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_PC]) == 1)
+        //        {
+        //            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_DEBUG], data);
+        //        }
+        //        else if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_DEBUG]) == 1)
+        //        {
+        //            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_PC], data);
+        //        }
+
         if( Board::getInstance()->getUsartQueue(1)->fullCheck() ==0 ){
             Board::getInstance()->getUsartQueue(1)->putData(data);
         }
@@ -51,6 +62,16 @@ void USART2_IRQHandler(void)
     if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
     {
         data = USART_ReceiveData(USART2);
+
+//        if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_PC]) == 2)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_DEBUG], data);
+//        }
+//        else if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_DEBUG]) == 2)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_PC], data);
+//        }
+
         if( Board::getInstance()->getUsartQueue(2)->fullCheck() ==0 ){
             Board::getInstance()->getUsartQueue(2)->putData(data);
         }
@@ -70,6 +91,16 @@ void USART3_IRQHandler(void)
     if (USART_GetITStatus(USART3, USART_IT_RXNE) != RESET)
     {
         data=USART_ReceiveData(USART3);
+
+//        if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_PC]) == 3)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_DEBUG], data);
+//        }
+//        else if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_DEBUG]) == 3)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_PC], data);
+//        }
+
         if( Board::getInstance()->getUsartQueue(3)->fullCheck() ==0 ){
             Board::getInstance()->getUsartQueue(3)->putData(data);
         }
@@ -89,6 +120,17 @@ void UART4_IRQHandler(void)
     if(USART_GetITStatus(UART4, USART_IT_RXNE) != RESET)
     {
         data = USART_ReceiveData(UART4);
+        //HF_USART_Put_Char(1,data);
+
+//        if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_PC]) == 4)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_DEBUG], data);
+//        }
+//        else if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_DEBUG]) == 4)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_PC], data);
+//        }
+
         if( Board::getInstance()->getUsartQueue(4)->fullCheck() ==0 ){
             Board::getInstance()->getUsartQueue(4)->putData(data);
         }
@@ -108,6 +150,16 @@ void UART5_IRQHandler(void)
     if(USART_GetITStatus(UART5, USART_IT_RXNE) != RESET)
     {
         data = USART_ReceiveData(UART5);
+
+//        if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_PC]) == 5)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_DEBUG], data);
+//        }
+//        else if(Board::getInstance()->getByteHighFourBit(Board::getInstance()->device_type[USART_DEBUG]) == 5)
+//        {
+//            Board::getInstance()->usartDeviceWriteByte(Board::getInstance()->device_type[USART_PC], data);
+//        }
+
         if( Board::getInstance()->getUsartQueue(5)->fullCheck() ==0 ){
             Board::getInstance()->getUsartQueue(5)->putData(data);
         }

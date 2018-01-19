@@ -40,16 +40,12 @@ void RemoteControl::call(void)
     {
         hfLinkNodeEvent(hf_link_node);
     }
-        
-//    oled.OLED_Show_Str(0,2,(unsigned char *)float2str(robot->measure_robot_speed.x,2,(char*)robot_speed.robot_x),0x01);
-//    oled.OLED_Show_Str(36,2,(unsigned char *)float2str(robot->measure_robot_speed.y,2,(char*)robot_speed.robot_y),0x01);
-//    oled.OLED_Show_Str(72,2,(unsigned char *)float2str(robot->measure_robot_speed.z,2,(char*)robot_speed.robot_z),0x01);
-
-//   oled.OLED_Show_Str(0,6,(unsigned char *)float2str(robot->measure_global_speed.x,2,(char*)robot_speed.robot_x),0x01);
-//    oled.OLED_Show_Str(36,6,(unsigned char *)float2str(robot->measure_global_speed.y,2,(char*)robot_speed.robot_y),0x01);
-//    oled.OLED_Show_Str(72,6,(unsigned char *)float2str(robot->measure_global_speed.z,2,(char*)robot_speed.robot_z),0x01);
 
     remote.call();   
+
+    if(hf_link_node->getReceiveRenewFlag(SHAKING_HANDS) == 1)
+        hf_link_node->masterSendCommand(SHAKING_HANDS);
+
     hf_link_node->masterSendCommand(SET_ROBOT_SPEED);
 }
 

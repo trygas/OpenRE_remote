@@ -380,7 +380,7 @@ unsigned char HFLink::readCommandAnalysis(Command command_state , unsigned char*
 unsigned char HFLink::setCommandAnalysis( Command command_state , unsigned char* p ,  unsigned short int len)
 {
 
-    if (hf_link_node_model == 1)
+    if (hf_link_node_model == 1 || hf_link_node_model == 2)
     { // master  , the slave can set the master's data ,so this code means received the slave's ack
         if(command_state == SHAKING_HANDS)
         {

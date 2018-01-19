@@ -27,6 +27,15 @@ PC_INTERFACE ?= usart_interface_4
 RADIO_INTERFACE ?= usart_interface_5
 endif
 
+ifeq "$(strip $(BOARD_TYPE))" "remote_v1"
+####select the usartx for board debug info printf : usart_interface_x,usb_slave  
+DEBUG_PRINTF_INTERFACE ?= usart_interface_4
+####select the usartxfor pc communications (hf_link) : usart_interface_x,usb_slave 
+PC_INTERFACE ?= usart_interface_1
+####select the usartx for remote control (hf_link) : usart_interface_x  
+RADIO_INTERFACE ?= usart_interface_4
+endif
+
 ifeq "$(strip $(ROBOT_MODEL))" "stone"
 ####select the motor interface for motor : motor1, motor2, motor3, motor4  
 MOTOR_INTERFACE_1 ?= motor1

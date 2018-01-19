@@ -19,54 +19,47 @@
 #include "remote_control.h"
 #include "remote_parameters.h"
 
-#define sudo 0.4
-
 void Remote::call(void)
 {
     if(robot == NULL) return;
-    modelswitchchoose();
-    keyboardchoose();
-    datatUpdate(&remote_control_voltage, &remote_control_speed);
+    datatUpdate();
 
     printf("%f %f\n", robot->expect_robot_speed.x, robot->expect_robot_speed.z);
 }
 
-void Remote::getExpectRobotSpeed(RemoteControlVoltage *remote_control_voltage, RemoteControlSpeed *remote_control_speed)
+void Remote::datatUpdate(void)
 {
-    if(remote_control_voltage->right_y > 1.0) robot->expect_robot_speed.x = remote_control_voltage->right_y -1.0;
-    else if(remote_control_voltage->right_y < 0.6) robot->expect_robot_speed.x = remote_control_voltage->right_y -0.6;
-    else robot->expect_robot_speed.x = 0;
-
-    if(remote_control_voltage->left_y > 1.0) robot->expect_robot_speed.y = remote_control_voltage->left_y-1.0;
-    else if(remote_control_voltage->left_y < 0.6) robot->expect_robot_speed.y = remote_control_voltage->left_y-0.6;
-    else robot->expect_robot_speed.y = 0;
-
-    if(remote_control_voltage->right_x > 1.0) robot->expect_robot_speed.z = remote_control_voltage->right_x-1.0;
-    else if(remote_control_voltage->right_x < 0.6) robot->expect_robot_speed.z = remote_control_voltage->right_x-0.6;
-    else robot->expect_robot_speed.z = 0;
-
-    robot->expect_robot_speed.x = robot->expect_robot_speed.x * sudo*2;
-    robot->expect_robot_speed.y = - robot->expect_robot_speed.y * 0.2;
-    robot->expect_robot_speed.z = -robot->expect_robot_speed.z * sudo*3.14*2;
+    keyboard.call();
+    getExpectRobotSpeed();
 }
 
-void Remote::datatUpdate(RemoteControlVoltage *remote_control_voltage, RemoteControlSpeed *remote_control_speed)
+void Remote::getExpectRobotSpeed(void)
 {
-    if(modelswitch[0] == 1)
-    {
-        printf("remote\n");
-        getRemoteVoltage(remote_control_voltage);
-        getExpectRobotSpeed(remote_control_voltage, remote_control_speed);
-    }
-    else
-    {
-        printf("keyboard\n");
-        if(keyboard[0] == 0)  robot->expect_robot_speed.x = sudo;
-        else if(keyboard[2] == 0)  robot->expect_robot_speed.x = -sudo;
-        else robot->expect_robot_speed.x = 0;
-        if(keyboard[1] == 0)  robot->expect_robot_speed.z = -sudo*3.14;
-        else if(keyboard[3] == 0)  robot->expect_robot_speed.z = sudo*3.14;
-        else robot->expect_robot_speed.z = 0;
-        robot->expect_robot_speed.y = 0;
-    }
+    robot->expect_robot_speed.x = maxSpeed * keyboard.out_remote_control_voltage.right_y;
+    robot->expect_robot_speed.y = maxSpeed * keyboard.out_remote_control_voltage.left_y;
+    robot->expect_robot_speed.z = maxSpeed * keyboard.out_remote_control_voltage.right_x * 3.14;
+}
+
+void Remote::updataRobotSpeed()
+{
+    robot->measure_robot_speed.x=0;
+    robot->measure_robot_speed.y=0;
+    robot->measure_robot_speed.z=0;
+}
+
+void Remote::updataGlobalSpeed()
+{
+    robot->measure_global_speed.x=0;
+    robot->measure_global_speed.y=0;
+    robot->measure_global_speed.z=0;
+}
+
+void Remote::clearCoordData()
+{
+    robot->measure_global_coordinate.x=0;
+    robot->measure_global_coordinate.y=0;
+    robot->measure_global_coordinate.z=0;
+    robot->measure_robot_coordinate.x=0;
+    robot->measure_robot_coordinate.y=0;
+    robot->measure_robot_coordinate.z=0;
 }

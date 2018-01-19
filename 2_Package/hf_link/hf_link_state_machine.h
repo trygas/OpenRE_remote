@@ -36,6 +36,9 @@ public:
 #if HF_LINK_NODE_MODEL==0
         Board::getInstance()->usartDeviceInit((DeviceType) port_num , 921600);
 #endif
+#if HF_LINK_NODE_MODEL==2
+        Board::getInstance()->usartDeviceInit((DeviceType) port_num , 115200);
+#endif
     }
     inline unsigned char* getSerializedData(void)
     {

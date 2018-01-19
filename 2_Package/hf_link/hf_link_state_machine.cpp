@@ -178,6 +178,9 @@ void StateMachine::sendMessage(const HFMessage* tx_message_)
 #if HF_LINK_NODE_MODEL==0
     HFLinkSendBuffer(port_num , tx_buffer , tx_buffer_length);
 #endif
+#if HF_LINK_NODE_MODEL==2
+    HFLinkSendBuffer(port_num , tx_buffer , tx_buffer_length);
+#endif
 
     send_message_count++;
 }

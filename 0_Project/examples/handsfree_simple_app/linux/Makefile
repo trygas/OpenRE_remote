@@ -1,9 +1,9 @@
 ######################################define project name, board type, and path
 
 #####BOARD_TYPE: control_unit_mini control_unit_v1 control_unit_v2
-BOARD_TYPE		?= control_unit_v2
+BOARD_TYPE		?= remote_v1
 #####ROBOT_MODEL :  
-ROBOT_MODEL     ?= null
+ROBOT_MODEL     ?= stone
 #####project name
 PROJECT			=  simple_app_$(ROBOT_MODEL)_$(BOARD_TYPE)
 TOP_PATH        =  ../../../..
@@ -25,7 +25,8 @@ INCDIR	+= -I. -I../src/
 #########################################################################package
 
 #PAKG: common robot_abstract math imu .....
-PAKG        = common 
+PAKG        = common robot_abstract math imu motor servo \
+              hf_link remote_control bluetooth keyboard
               
 #OS_MODULE: UCOSII UCOSIII GUI FAT
 OS_MODULE =           

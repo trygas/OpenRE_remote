@@ -184,14 +184,12 @@ HEADERS += 0_Project/examples/handsfree_simple_app/src/main_config.h \
 		2_Package/touch_screen/ft5206.h \
 		2_Package/touch_screen/gt9147.h \
 		2_Package/touch_screen/ott2001a.h \
-		2_Package/touch_screen/touch_top.h \
-                2_Package/keyboard/key_adc.h \
-                2_Package/keyboard/key_io.h \
-                2_Package/keyboard/key_top.h \
+                2_Package/touch_screen/touch_top.h \
+                2_Package/keyboard/keyboard.h \
                 2_Package/remote_control/remote.h \
                 2_Package/remote_control/remote_control.h \
+                2_Package/remote_control/remote_parameters.h \
                 2_Package/bluetooth/bluetooth.h \
-                2_Package/robot_abstract/remote_parameters.h \
 		3_OS/os_include.h \
 		3_OS/STM32F1/RTOS/uCOS-II/CONFIG/includes.h \
 		3_OS/STM32F1/RTOS/uCOS-II/CONFIG/os_cfg.h \
@@ -232,6 +230,7 @@ SOURCES += 0_Project/examples/handsfree_simple_app/src/main.cpp \
 		1_Processor/BoardAbstract/control_unit_v1.cpp \
 		1_Processor/BoardAbstract/control_unit_v2.cpp \
 		1_Processor/BoardAbstract/control_unit_mini.cpp \
+                1_Processor/BoardAbstract/remote_v1.cpp \
 		1_Processor/STM32F1/BSPLIB/adc_dac.c \
 		1_Processor/STM32F1/BSPLIB/can.c \
 		1_Processor/STM32F1/BSPLIB/delay.c \
@@ -312,10 +311,8 @@ SOURCES += 0_Project/examples/handsfree_simple_app/src/main.cpp \
 		2_Package/touch_screen/ft5206.c \
 		2_Package/touch_screen/gt9147.c \
 		2_Package/touch_screen/ott2001a.c \
-		2_Package/touch_screen/touch_top.c \
-                2_Package/keyboard/key_adc.cpp \
-                2_Package/keyboard/key_io.cpp \
-                2_Package/keyboard/key_top.cpp \
+                2_Package/touch_screen/touch_top.c \
+                2_Package/keyboard/keyboard.cpp \
                 2_Package/remote_control/remote.cpp \
                 2_Package/remote_control/remote_control.cpp \
                 2_Package/bluetooth/bluetooth.cpp \

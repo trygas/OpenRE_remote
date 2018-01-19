@@ -1,9 +1,9 @@
 #ifndef HF_LINK_PLATFORM_H
 #define HF_LINK_PLATFORM_H
 
-#define HF_LINK_NODE_MODEL  0    //1:master(PC)  0 :slave(MCU)
-
-#if HF_LINK_NODE_MODEL==0
+#define HF_LINK_NODE_MODEL  2    //1:master(PC)  0 :slave(MCU)
+#include "board.h"
+#if (HF_LINK_NODE_MODEL==0 || HF_LINK_NODE_MODEL==2)
 
 #include "board.h"
 

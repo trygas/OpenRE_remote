@@ -48,6 +48,23 @@ BOARD_ABSTRACT  += $(TOP_PATH)/1_Processor/BoardAbstract/control_unit_mini.cpp
 
 endif
 
+################################################################################  
+# REMOTE_V1:
+#   
+#   
+#   
+################################################################################  
+
+ifeq "$(strip $(BOARD_TYPE))" "remote_v1"
+
+DDEFS           += -DREMOTE_V1 -DSTM32F10X 
+DDEFS           += -DHSE_VALUE=8000000 -DUSE_STDPERIPH_DRIVER 
+DDEFS           += -DSTM32F10X 
+MCU             ?= cortex-m3 
+CPU_TYPE        ?= STM32F1
+BOARD_ABSTRACT  += $(TOP_PATH)/1_Processor/BoardAbstract/remote_v1.cpp
+
+endif
 
 ################################################################################  
 # :
